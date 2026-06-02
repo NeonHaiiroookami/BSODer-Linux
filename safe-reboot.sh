@@ -8,19 +8,11 @@ fi
 
 echo 1 > /proc/sys/kernel/sysrq
 
-echo "Initiating safe emergency reboot (REISUB)..."
+echo "Initiating safe emergency reboot..."
 
 # R: Switch keyboard from raw mode to XLATE
 echo r > /proc/sysrq-trigger
 sleep 1
-
-# E: Send SIGTERM to all processes except init
-echo e > /proc/sysrq-trigger
-sleep 2
-
-# I: Send SIGKILL to all processes that didn't shut down cleanly
-echo i > /proc/sysrq-trigger
-sleep 2
 
 # S: Flush all cached data to disk (Sync)
 echo s > /proc/sysrq-trigger
